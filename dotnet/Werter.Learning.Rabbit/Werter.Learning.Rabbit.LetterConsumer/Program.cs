@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Werter.Learning.Rabbit.ConsoleApp.Models;
+using Werter.Learning.Rabbit.Models;
 
-namespace Werter.Learning.Rabbit.ConsoleApp
+namespace Werter.Learning.Rabbit.LetterConsumer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("I'm a consumer");
-
-        
-
+            Console.WriteLine($"Letter Consumer: {Process.GetCurrentProcess().Id} ");
 
             var connectionFactory = new ConnectionFactory()
             {
@@ -31,7 +28,33 @@ namespace Werter.Learning.Rabbit.ConsoleApp
 
 
             Console.ReadKey();
+        }
 
+
+        private static void Declare(IModel model)
+        {
+            model.ExchangeDeclare(
+                exchange: "hello_exchange",
+                type: "fanout",
+                durable: true,
+                autoDelete: false,
+                arguments: null
+            );
+
+            model.QueueDeclare(
+                queue: "hello_queue",
+                durable: true,
+                exclusive: false,
+                autoDelete: false,
+                null
+            );
+
+            model.QueueBind(
+                queue: "hello_queue",
+                exchange: "hello_exchange",
+                "",
+                null
+            );
         }
 
         private static void BuildConsumer(IModel model)
@@ -47,27 +70,12 @@ namespace Werter.Learning.Rabbit.ConsoleApp
         {
             // Tenta deserializar
             var letter = DeserializerMessage(model, eventArgs);
-            
+
             // Chamada de negocio
             ReadLetter(model, eventArgs, letter);
         }
 
-        // Metodo de negocio
-        private static void ReadLetter(IModel model, BasicDeliverEventArgs eventArgs, Letter letter)
-        {
-            try
-            {
-                Console.WriteLine(letter.ToString());
-                model.BasicAck(eventArgs.DeliveryTag, false);
-            }
-            catch (Exception)
-            {
-                model.BasicNack(eventArgs.DeliveryTag, false, true);
-                throw;
-            }
-        }
 
-        // Metodo de decodificação de mensagem
         private static Letter DeserializerMessage(IModel model, BasicDeliverEventArgs eventArgs)
         {
             Letter letter;
@@ -91,30 +99,34 @@ namespace Werter.Learning.Rabbit.ConsoleApp
             }
         }
 
-        private static void Declare(IModel model)
+        // Metodo de negocio
+        private static void ReadLetter(IModel model, BasicDeliverEventArgs eventArgs, Letter letter)
         {
-            model.ExchangeDeclare(
-                exchange: "hello_exchange",
-                type: "fanout",
-                durable: true,
-                autoDelete: false,
-                arguments: null
-            );
+            try
+            {
+                DoAnything(letter);
+                model.BasicAck(eventArgs.DeliveryTag, false);
+            }
+            catch (Exception)
+            {
+                model.BasicNack(eventArgs.DeliveryTag, false, true);
+                throw;
+            }
+        }
 
-            model.QueueDeclare(
-                queue: "hello_queue",
-                durable: false,
-                exclusive: false,
-                autoDelete: false,
-                null
-            );
+        private static int _qtdMessageCountInConsole;
 
-            model.QueueBind(
-                queue: "hello_queue",
-                exchange: "hello_exchange",
-                "",
-                null
-            );
+        private static void DoAnything(Letter letter)
+        {
+            Console.WriteLine(letter.ToString());
+
+            if (_qtdMessageCountInConsole == 10)
+            {
+                _qtdMessageCountInConsole = 0;
+                Console.Clear();
+            }
+
+            _qtdMessageCountInConsole++;
         }
     }
 }

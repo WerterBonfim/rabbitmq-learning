@@ -1,0 +1,6 @@
+{
+    "recipient": "Werter",
+    "sender": "RabbitMQ",
+    "Date": "2021-09-19T18:32:28.909524-03:00",
+    "message": "Olá, essa mensagem foi escrita no VS Code e enviada pelo admin do RabbitMQ"
+}

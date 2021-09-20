@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 
-namespace Werter.Learning.Rabbit.ConsoleApp.Models
+namespace Werter.Learning.Rabbit.Models
 {
     public class Letter
     {

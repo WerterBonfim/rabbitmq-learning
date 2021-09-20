@@ -2,6 +2,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Werter.Learning.Rabbit.ConsoleApp", "Werter.Learning.Rabbit.ConsoleApp\Werter.Learning.Rabbit.ConsoleApp.csproj", "{EE3BD93F-A33D-4F39-9985-1DCBB902AC83}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Basico", "01-Basico", "{435CBCA3-D900-4EF2-8DA2-5A24CA0CA244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Werter.Learning.Rabbit.LetterConsumer", "Werter.Learning.Rabbit.LetterConsumer\Werter.Learning.Rabbit.LetterConsumer.csproj", "{9F696733-AD67-4305-B000-8AD1FF3E841E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Werter.Learning.Rabbit.Models", "Werter.Learning.Rabbit.Models\Werter.Learning.Rabbit.Models.csproj", "{368BB7C7-906E-4AED-9C55-8D164E114D9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Werter.Learning.Rabbit.Publisher", "Werter.Learning.Rabbit.Publisher\Werter.Learning.Rabbit.Publisher.csproj", "{20C4BC00-4CE4-406A-A944-F8609D19381D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublisherConsoleApp", "PublisherConsoleApp\PublisherConsoleApp.csproj", "{5AD863BE-174C-4DFF-A8A0-49182CE5E5D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +22,27 @@ Global
 		{EE3BD93F-A33D-4F39-9985-1DCBB902AC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE3BD93F-A33D-4F39-9985-1DCBB902AC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE3BD93F-A33D-4F39-9985-1DCBB902AC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F696733-AD67-4305-B000-8AD1FF3E841E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F696733-AD67-4305-B000-8AD1FF3E841E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F696733-AD67-4305-B000-8AD1FF3E841E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F696733-AD67-4305-B000-8AD1FF3E841E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368BB7C7-906E-4AED-9C55-8D164E114D9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368BB7C7-906E-4AED-9C55-8D164E114D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368BB7C7-906E-4AED-9C55-8D164E114D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368BB7C7-906E-4AED-9C55-8D164E114D9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C4BC00-4CE4-406A-A944-F8609D19381D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C4BC00-4CE4-406A-A944-F8609D19381D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C4BC00-4CE4-406A-A944-F8609D19381D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C4BC00-4CE4-406A-A944-F8609D19381D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD863BE-174C-4DFF-A8A0-49182CE5E5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD863BE-174C-4DFF-A8A0-49182CE5E5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD863BE-174C-4DFF-A8A0-49182CE5E5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD863BE-174C-4DFF-A8A0-49182CE5E5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F696733-AD67-4305-B000-8AD1FF3E841E} = {435CBCA3-D900-4EF2-8DA2-5A24CA0CA244}
+		{368BB7C7-906E-4AED-9C55-8D164E114D9A} = {435CBCA3-D900-4EF2-8DA2-5A24CA0CA244}
+		{20C4BC00-4CE4-406A-A944-F8609D19381D} = {435CBCA3-D900-4EF2-8DA2-5A24CA0CA244}
+		{5AD863BE-174C-4DFF-A8A0-49182CE5E5D4} = {435CBCA3-D900-4EF2-8DA2-5A24CA0CA244}
 	EndGlobalSection
 EndGlobal

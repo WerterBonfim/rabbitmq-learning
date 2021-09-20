@@ -1,0 +1,13 @@
+Estrategias de design
+
+muitas combinações de arguments
+
+
+boas praticas rabbitm
+
+prefetchCount -> otmização de rede
+BasicQos(0, 100, false)
+tenha somente um model/channel por consumidor
+
+Resiliêcia: Capacidade de um ecossistema retornar à condição original de 
+equilíbrio após suportar alterações ou perturbações ambientais.
