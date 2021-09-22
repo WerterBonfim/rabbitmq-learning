@@ -11,3 +11,24 @@ tenha somente um model/channel por consumidor
 
 Resiliêcia: Capacidade de um ecossistema retornar à condição original de 
 equilíbrio após suportar alterações ou perturbações ambientais.
+
+* Separar operação de negocio do código que lida com fila
+
+
+Transient: Dropa a exchange ao restarta o rabbit
+Maior parte do tempo é duravel
+
+
+
+Filas nomeadas pelo servidor devem ser usadas o estado que é transitório por natureza
+e específico para um determinado consumidor (instância do aplicativo)
+
+parametros da QueueDeclare:
+
+queue: nome da fila, se for vazio, o broken gerar um nome.
+"amq." é um nome reservado, se for definido assim o channel-level gera uma exception
+
+durable: se o rabbit reiniciar, essa fila vai morrer.
+exclusive: só pode ter um consumidor ativo, se outro tentar se conectar, o rabbit gera uma exception
+autoDelete: 
+arguments: null);
